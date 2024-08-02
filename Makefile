@@ -22,7 +22,7 @@ kill: # Destroys the container
 
 test: # Run tests
 	@echo "--> Testing on Docker."
-	docker compose run app python src/manage.py test
+	docker compose run app pytest
 
 migrations: # Create Database Migrations
 	@echo "--> Creating Migrations"
@@ -36,3 +36,8 @@ migrate: # Run migrations
 superuser: # Creates a super-user for django
 	@echo "--> Building Compose"
 	docker compose run app python src/manage.py createsuperuser
+
+
+bash: # Opens a bash terminal inside the docker container
+	docker compose run app bash
+
