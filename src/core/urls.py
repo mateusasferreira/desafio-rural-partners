@@ -16,7 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.http import HttpResponse
-from django.urls import path
+from django.urls import include, path
+from apps.ruralpartners.api.v1.urls import rural_partners_router
 
 
 def ping_view(*args):
@@ -26,4 +27,5 @@ def ping_view(*args):
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("ping", ping_view, name="ping-view"),
+    path("api/v1/", include(rural_partners_router.urls)),
 ]
