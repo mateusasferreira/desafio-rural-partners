@@ -40,4 +40,3 @@ superuser: # Creates a super-user for django
 
 bash: # Opens a bash terminal inside the docker container
 	docker compose run app bash
-

@@ -22,7 +22,8 @@ from django.urls import path
 def ping_view(*args):
     return HttpResponse("pong")
 
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('ping', ping_view, name="ping-view")
+    path("admin/", admin.site.urls),
+    path("ping", ping_view, name="ping-view"),
 ]
