@@ -1,7 +1,10 @@
 from tabnanny import verbose
+from xml.dom.minidom import DocumentType
 from django.db import models
 
 from utils.models import AbstractBaseModel
+import validate_docbr
+from django.core.exceptions import ValidationError
 
 
 class EntityTypeOptions(models.TextChoices):
@@ -18,6 +21,18 @@ class Producer(AbstractBaseModel):
         default=EntityTypeOptions.COMPANY,
     )
     name = models.CharField("Nome", max_length=50)
+
+    def _validate_document(self):
+        validator = validate_docbr.CNPJ
+
+        if self.entity_type == EntityTypeOptions.INDIVIDUAL:
+            validator = validate_docbr.CPF
+
+        if not validator().validate(self.document):
+            raise ValidationError("Documento Inválido")
+
+    def clean(self):
+        self._validate_document()
 
     class Meta:
         verbose_name = "Produtor Rural"

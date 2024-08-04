@@ -182,7 +182,17 @@ files = [
     {file = "tzdata-2024.1.tar.gz", hash = "sha256:2674120f8d891909751c38abcdfd386ac0a5a1127954fbc332af6b5ceae07efd"},
 ]
 
+[[package]]
+name = "validate-docbr"
+version = "1.10.0"
+description = "Validate brazilian documents."
+optional = false
+python-versions = "*"
+files = [
+    {file = "validate_docbr-1.10.0-py3-none-any.whl", hash = "sha256:ff016f180b0c5ecff06abce1d83385924438c4d4c7f5c050e90fb724f1d968bb"},
+]
+
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "c7da65b2b83e8907a97b3f76a61de070b9dffbaad41371bb50059e50c3bdac49"
+content-hash = "d7b8e1ba6aaa7d3e0e28222e3c23585c51f5b9b59f8e01362bb253cd367155b3"
