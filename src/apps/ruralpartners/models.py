@@ -69,3 +69,18 @@ class RuralProperty(AbstractBaseModel):
         related_name="properties",
         verbose_name="Culturas Plantadas",
     )
+
+    def _validate_area(self):
+        if (
+            self.arable_area_hectares + self.vegetation_area_hectares
+        ) > self.total_area_hectares:
+            raise ValidationError(
+                "A soma das áreas agricultável e de vegetação não deve ultrapassar a área total"
+            )
+
+    def clean(self):
+        self._validate_area()
+
+    class Meta:
+        verbose_name = "Fazenda"
+        verbose_name_plural = "Fazendas"
