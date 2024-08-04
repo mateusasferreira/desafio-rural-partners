@@ -34,6 +34,10 @@ class Producer(AbstractBaseModel):
     def clean(self):
         self._validate_document()
 
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        return super(Producer, self).save(*args, **kwargs)
+
     class Meta:
         verbose_name = "Produtor Rural"
         verbose_name_plural = "Produtores Rurais"
@@ -80,6 +84,10 @@ class RuralProperty(AbstractBaseModel):
 
     def clean(self):
         self._validate_area()
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        return super(RuralProperty, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = "Fazenda"
