@@ -1,6 +1,10 @@
 from decimal import Decimal
 import pytest
-from apps.ruralpartners.models import EntityTypeOptions, Producer, RuralProperty
+from apps.ruralpartners.models import (
+    EntityTypeOptions,
+    Producer,
+    RuralProperty,
+)
 from django.core.exceptions import ValidationError
 
 
@@ -83,3 +87,11 @@ def test_create_rural_property_area_exceeding_error(producer):
         match="A soma das áreas agricultável e de vegetação não deve ultrapassar a área total",
     ):
         property.full_clean()
+
+
+@pytest.mark.django_db
+def test_rural_property_can_have_multiple_cultures(rural_property):
+    rural_property.planted_cultures.create(name="soja")
+    rural_property.planted_cultures.create(name="milho")
+
+    assert rural_property.planted_cultures.count() == 2
