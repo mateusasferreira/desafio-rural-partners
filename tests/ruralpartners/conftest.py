@@ -1,7 +1,7 @@
 from decimal import Decimal
 import pytest
 
-from apps.ruralpartners.models import Producer, RuralProperty
+from apps.ruralpartners.models import AgriculturalCulture, Producer, RuralProperty
 
 
 @pytest.fixture
@@ -20,3 +20,13 @@ def rural_property(producer):
         arable_area_hectares=Decimal("50"),
         vegetation_area_hectares=Decimal("50"),
     )
+
+
+@pytest.fixture
+def soy_culture():
+    return AgriculturalCulture.objects.create(name="soy")
+
+
+@pytest.fixture
+def corn_culture():
+    return AgriculturalCulture.objects.create(name="corn")
