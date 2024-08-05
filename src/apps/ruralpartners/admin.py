@@ -1,3 +1,18 @@
 from django.contrib import admin
 
-# Register your models here.
+from apps.ruralpartners.models import AgriculturalCulture, Producer, RuralProperty
+
+
+@admin.register(Producer)
+class ProducerAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(RuralProperty)
+class RuralPropertyAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(AgriculturalCulture)
+class AgriculturalCultureAdmin(admin.ModelAdmin):
+    pass
