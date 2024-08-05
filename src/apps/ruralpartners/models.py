@@ -72,6 +72,7 @@ class RuralProperty(AbstractBaseModel):
         AgriculturalCulture,
         related_name="properties",
         verbose_name="Culturas Plantadas",
+        null=True,
     )
 
     def _validate_area(self):
