@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.http import HttpResponse
 from django.urls import include, path
 from apps.ruralpartners.api.v1.urls import rural_partners_router
+from drf_spectacular.views import SpectacularSwaggerView, SpectacularAPIView
 
 
 def ping_view(*args):
@@ -27,5 +28,7 @@ def ping_view(*args):
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("ping", ping_view, name="ping-view"),
+    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
+    path("docs", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
     path("api/v1/", include(rural_partners_router.urls)),
 ]
