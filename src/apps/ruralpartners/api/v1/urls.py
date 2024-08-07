@@ -11,6 +11,6 @@ rural_partners_router.register(
     r"agricultural_cultures", views.AgriculturalCultureViewSet
 )
 
-urlpatterns = [path("stats/", views.StatsView.as_view())]
+urlpatterns = [path("rural_properties/stats/", views.StatsView.as_view())]
 
 urlpatterns += rural_partners_router.urls
