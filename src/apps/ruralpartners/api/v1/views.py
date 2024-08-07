@@ -35,6 +35,8 @@ class RuralPropertyViewSet(viewsets.ModelViewSet):
 
 
 class StatsView(views.APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
     def get(self, *args):
         rural_property_stats = RuralProperty.objects.aggregate(
             total_property_area=Sum("total_area_hectares", default=0),
