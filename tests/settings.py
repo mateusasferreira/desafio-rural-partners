@@ -7,3 +7,5 @@ DATABASES = {
         "NAME": os.path.join(BASE_DIR, "tests.sqlite3"),
     }
 }
+
+ENVIRONMENT = "test"
