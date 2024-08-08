@@ -37,6 +37,8 @@ superuser: # Cria um super usuário para acesso ao admin
 	@echo "--> Building Compose"
 	docker compose run app python src/manage.py createsuperuser
 
+testtoken: # Cria um token de autenticação para ambiente local
+	docker compose run app python src/manage.py createtesttoken
 
 bash: # Abre um terminal dentro da imagem docker da API
 	docker compose run app bash

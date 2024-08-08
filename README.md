@@ -12,25 +12,40 @@ API de cadastro de Produtores Rurais.
 
 # Instruções
 
-1) Buildar a imagem:
+1) Criar arquivo .env
+
+```shell
+mv .env.example .env
+```
+
+2) Buildar a imagem:
 
 ```shell
 make build
 ```
 
-2) Executar migrations e seeding:
+3) Executar migrations e seeding:
 
 ```shell
 make migrate
 ```
 
-3) Executar testes:
+4) Executar testes:
 
 ```shell
 make test
 ```
 
-4) Executar o servidor local:
+5) Gerar token de autenticação:
+
+```shell
+make testtoken
+```
+
+Este comando cria um token de API para autenticar nos endpoint, no padrão `Authorization: Token <token>`.
+Esse comando foi criado somente para agilizar testes locais, mas também pode ser criado pela interface do admin.
+
+6) Executar o servidor local:
 
 ```shell
 make run
@@ -38,7 +53,7 @@ make run
 
 **Acessar a aplicação via `http://localhost:8000`
 
-5) Listar todos os comandos:
+7) Listar todos os comandos:
 
 ```shell
 make help
